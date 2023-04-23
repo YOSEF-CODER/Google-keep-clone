@@ -2,13 +2,14 @@
     --primary: #EA40A4;
     --business: #3A82EE;
     --personal: var(--primary);
-    --light: #EEE;
+    --light: #FFFFFF;
     --grey: #888;
     --dark: #313154;
     --danger: #ff5b57;
-    --shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    --shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
     --business-glow: 0px 0px 4px rgba(58, 130, 238, 0.75);
     --personal-glow: 0px 0px 4px rgba(234, 64, 164, 0.75);
+    --gcolor: #4C4C4C;
 }
 
 * {
@@ -43,7 +44,7 @@ h3 {
     color: var(--dark);
     font-size: 1rem;
     font-weight: 400;
-    margin-bottom: 0.5rem;
+    margin-bottom: 1rem;
 }
 
 h4 {
@@ -53,33 +54,17 @@ h4 {
     margin-bottom: 0.5rem;
 }
 
-.greeting .title {
-    display: flex;
-}
-
-.greeting .title input {
-    margin-left: 0.5rem;
-    flex: 1 1 0%;
-    min-width: 0;
-}
-
-.greeting .title,
-.greeting .title input {
-    color: var(--dark);
-    font-size: 1.5rem;
-    font-weight: 700;
-}
-
-.create-todo input[type="text"] {
+.create-todo input[type="text"],
+.create-todo textarea {
     display: block;
     width: 100%;
-    font-size: 1.125rem;
+    font-size: medium;
     padding: 1rem 1.5rem;
     color: var(--dark);
     background-color: #FFF;
     border-radius: 0.5rem;
-    box-shadow: var(--shadow);
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
+    border: 1px solid black;
 }
 
 .create-todo .options {
@@ -87,18 +72,18 @@ h4 {
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 1rem;
     margin-bottom: 1.5rem;
+    background-color: red;
 }
 
 .create-todo .options label {
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 1.5rem;
-    background-color: #FFF;
+    padding: 0.5rem;
     border-radius: 0.5rem;
-    box-shadow: var(--shadow);
     cursor: pointer;
+    gap: 1rem;
+    border: 1px black solid;
 }
 
 input[type="radio"],
@@ -107,9 +92,9 @@ input[type="checkbox"] {
 }
 
 .bubble {
-    display: flex;
+    /* display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: center; */
     width: 20px;
     height: 20px;
     border-radius: 50%;
@@ -124,10 +109,6 @@ input[type="checkbox"] {
 
 .bubble::after {
     content: "";
-    display: block;
-    opacity: 0;
-    width: 0px;
-    height: 0px;
     background-color: var(--business);
     box-shadow: var(--business-glow);
     border-radius: 50%;
@@ -153,9 +134,9 @@ input:checked~.bubble::after {
 
 .create-todo input[type="submit"] {
     display: block;
-    width: 100%;
-    font-size: 1.125rem;
-    padding: 1rem 1.5rem;
+    margin: 0 auto;
+    font-size: 1rem;
+    padding: 0.8rem 1.5rem;
     color: #FFF;
     background-color: var(--primary);
     border-radius: 0.5rem;
@@ -227,4 +208,12 @@ input:checked~.bubble::after {
 .todo-item.done .todo-content input {
     text-decoration: line-through;
     color: var(--grey);
+}
+
+.cardd {
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+    padding: 1rem;
+    margin: 2rem auto;
+    max-width: 40rem;
 }

@@ -73,7 +73,7 @@ onMounted(() => {
             <div class="logo">
               <img src="../assets/img/files.png" alt="">
 
-               <h1>Hyper Notes </h1>
+               <h1>Todo Lists </h1>
             </div>
             
              
@@ -107,7 +107,7 @@ onMounted(() => {
 
 
   <section class="create-todo cardd">
-    <h3>Create A Note</h3>
+    <h3>Create A Todo List</h3>
 
     <form @submit.prevent="addTodo">
 
@@ -149,13 +149,13 @@ onMounted(() => {
   				</div>
 
 
-      <input type="submit" value="Add Note" >
+      <input type="submit" value="Add Todo" >
     </form>
   </section>
 
 
  <section class="todo-list">
-  <h3>Notes</h3>
+  <h3>Todo Lists</h3>
 
   <div class="list">
     <div v-for="todo in todos_asc" :class="`todo-item ${todo.done && 'done'}`" :key="todo.createdAt">

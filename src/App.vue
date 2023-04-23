@@ -1,30 +1,128 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
+
+import {ref,onMounted,computed,watch} from 'vue'
+
+const todos = ref([])
+const name = ref('')
+
+const input_title = ref('')
+const input_content = ref('')
+const input_category=ref(null)
+
+
+
+const todos_asc=computed(() => {
+  todos.value.sort((a,b) => {
+    return b.createdAt - a.createdAt
+  })
+})
+
+
+const addTodo = () => {
+
+  if (input_title.value.trim() === '' || input_content.value.trim() === '' || input_category.value === null) {
+    return
+  }
+
+  todos.value.push({
+
+    title: input_title.value,
+    content: input_content.value,
+    category: input_category.value,
+    done: false,
+    createdAt: new Date().getTime()
+
+  })
+  
+}
+
+
+watch(todos,newVal => {
+  localStorage.setItem('todos',JSON.stringify(newVal))
+},{deep:true})
+
+
+watch(name,(newVal) => {
+  localStorage.setItem('name',newVal)
+})
+
+
+onMounted(() => {
+  name.value = localStorage.getItem('name') || ''
+  todos.value=JSON.parse(localStorage.getItem('todos')) || [] 
+})
 </script>
 
 <template>
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
+ <main class="app">
+  <section class="greeting">
+    <h2 class="title">
+      What's up,<input type="text" placeholder="Name here..." v-model="name">
+    </h2>
+  </section>
+
+
+  <section class="create-todo">
+    <h3>Create A Note</h3>
+
+    <form @submit.prevent="addTodo">
+
+      <h4>What's on your todo list</h4>
+
+
+     <input type="text" placeholder="Title" v-model="input_title">
+  <input type="text" placeholder="Content..." v-model="input_content">
+
+
+
+      <h4>Pick a category</h4>
+
+
+      <div class="options">
+        <label>
+          <input 
+          type="radio" 
+          name="category" 
+          value="business" 
+          v-model="input_category">
+          <span class="bubble business"></span>
+          <div>Business</div>
+        </label>
+
+         <label>
+            <input 
+            type="radio" 
+            name="category" 
+            value="personal" 
+            v-model="input_category">
+            <span class="bubble personal"></span>
+            <div>Personal</div>
+          </label>
+
+
+
+      </div>
+
+
+      <input type="submit" value="Add todo" >
+    </form>
+  </section>
+
+
+ <section class="todo-list">
+  <h3>Notes</h3>
+
+  <div class="list">
+    <div v-for="todo in todos_asc" :class="`todo-item ${todo.done && 'done'}`" :key="todo.createdAt">
+
+
+      <label>
+        <input type="checkbox" v-model="todo.done">
+        <span :class="`bubble ${todo.category}`"></span>
+      </label>
+    </div>
   </div>
-  <HelloWorld msg="Vite + Vue" />
+ </section>
+ </main>
 </template>
 
-<style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
-}
-</style>

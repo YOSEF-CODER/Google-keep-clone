@@ -122,30 +122,31 @@ onMounted(() => {
       <h4>Pick a category</h4>
 
 
-      <div class="options">
-        <label>
-          <input 
-          type="radio" 
-          name="category" 
-          value="business" 
-          v-model="input_category">
-          <span class="bubble business"></span>
-          <div>Business</div>
-        </label>
+     <div class="options">
 
-         <label>
-            <input 
-            type="radio" 
-            name="category" 
-            value="personal" 
-            v-model="input_category">
-            <span class="bubble personal"></span>
-            <div>Personal</div>
-          </label>
+  					<label>
+  						<input 
+  							type="radio" 
+  							name="category" 
+  							id="category1" 
+  							value="business"
+  							v-model="input_category" />
+  						<span class="bubble business"></span>
+  						<div>Business</div>
+  					</label>
 
+  					<label>
+  						<input 
+  							type="radio" 
+  							name="category" 
+  							id="category2" 
+  							value="personal"
+  							v-model="input_category" />
+  						<span class="bubble personal"></span>
+  						<div>Personal</div>
+  					</label>
 
-
-      </div>
+  				</div>
 
 
       <input type="submit" value="Add Note" >
@@ -300,6 +301,6 @@ h2.title input {
 }
 
 h2.title input {
-    color: red;
+    color: #00C3FF;
 }
 </style>

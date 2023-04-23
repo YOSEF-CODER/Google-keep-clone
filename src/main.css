@@ -1,6 +1,6 @@
 :root {
-    --primary: #EA40A4;
-    --business: #3A82EE;
+    --primary: #00C3FF;
+    --business: #d3249f;
     --personal: var(--primary);
     --light: #FFFFFF;
     --grey: #888;
@@ -33,6 +33,12 @@ body {
     color: var(--dark);
 }
 
+.app {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
 section {
     margin-top: 2rem;
     margin-bottom: 2rem;
@@ -54,6 +60,11 @@ h4 {
     margin-bottom: 0.5rem;
 }
 
+.create-todo {
+    width: 100%;
+    height: 70vh;
+}
+
 .create-todo input[type="text"],
 .create-todo textarea {
     display: block;
@@ -72,18 +83,18 @@ h4 {
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 1rem;
     margin-bottom: 1.5rem;
-    background-color: red;
 }
 
 .create-todo .options label {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 0.5rem;
+    padding: 1.5rem;
+    background-color: #FFF;
     border-radius: 0.5rem;
+    border: 1px solid black;
     cursor: pointer;
-    gap: 1rem;
-    border: 1px black solid;
 }
 
 input[type="radio"],
@@ -92,9 +103,9 @@ input[type="checkbox"] {
 }
 
 .bubble {
-    /* display: flex;
+    display: flex;
     align-items: center;
-    justify-content: center; */
+    justify-content: center;
     width: 20px;
     height: 20px;
     border-radius: 50%;
@@ -109,6 +120,10 @@ input[type="checkbox"] {
 
 .bubble::after {
     content: "";
+    display: block;
+    opacity: 0;
+    width: 0px;
+    height: 0px;
     background-color: var(--business);
     box-shadow: var(--business-glow);
     border-radius: 50%;
@@ -153,14 +168,21 @@ input:checked~.bubble::after {
     margin: 1rem 0;
 }
 
+.todo-list {
+    overflow: auto;
+    height: 80vh;
+}
+
 .todo-list .todo-item {
     display: flex;
+    /* flex-direction: column; */
     align-items: center;
-    background-color: #FFF;
     padding: 1rem;
     border-radius: 0.5rem;
     box-shadow: var(--shadow);
     margin-bottom: 1rem;
+    width: auto;
+    gap: 1rem;
 }
 
 .todo-item label {
@@ -170,12 +192,13 @@ input:checked~.bubble::after {
 }
 
 .todo-item .todo-content {
-    flex: 1 1 0%;
+    display: grid;
+    grid-template-columns: 1fr 4fr 1fr;
 }
 
 .todo-item .todo-content input {
     color: var(--dark);
-    font-size: 1.125rem;
+    font-size: 1rem;
 }
 
 .todo-item .actions {
@@ -203,6 +226,13 @@ input:checked~.bubble::after {
 
 .todo-item .actions .delete {
     background-color: var(--danger);
+    padding: 0.7rem 1rem;
+    font-size: small;
+    border-radius: 6px;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    -ms-border-radius: 6px;
+    -o-border-radius: 6px;
 }
 
 .todo-item.done .todo-content input {

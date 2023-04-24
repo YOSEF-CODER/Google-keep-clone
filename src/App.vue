@@ -192,7 +192,8 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
-  border-bottom: 1px solid black;
+
+  border-bottom: 1px solid rgb(172, 193, 208);
 }
 
 header a {
@@ -247,7 +248,7 @@ li {
 
 
 .search{
-  border: 1px solid black;
+border: 1px solid rgb(172, 193, 208);
   height: 2.5rem;
   width: 25rem;
   font-size: large;

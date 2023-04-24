@@ -75,7 +75,7 @@ h4 {
     background-color: #FFF;
     border-radius: 0.5rem;
     margin-bottom: 1rem;
-    border: 1px solid black;
+    border: 1px solid rgb(172, 193, 208);
 }
 
 .create-todo .options {
@@ -93,7 +93,7 @@ h4 {
     padding: 1.5rem;
     background-color: #FFF;
     border-radius: 0.5rem;
-    border: 1px solid black;
+    border: 1px solid rgb(172, 193, 208);
     cursor: pointer;
 }
 
